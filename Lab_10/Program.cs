@@ -16,36 +16,55 @@ namespace Lab_10
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите количество градусов угла");
-            double gradus = double.Parse(Console.ReadLine());
-            Console.WriteLine("Введите количество минут угла");
-            double min = double.Parse(Console.ReadLine());
-            Console.WriteLine("Введите количество секунд угла");
-            double sec = double.Parse(Console.ReadLine());
-            var Radians = string. (gradus + min / 60 + sec / 3600) * (Math.PI) / 180;
-            if (gradus < 0)
-                Radians = -Radians;
-            Console.WriteLine("Значение данного угла в радианах=" + Radians);
+            Ygol rad = new Ygol();
+            Console.WriteLine("Введите число 1 или 2"); //Для понимания работы
+            int a= Convert.ToInt32(Console.ReadLine());
+            if (a == 1)
+            {
+                Console.WriteLine("Введите число градусов угла");
+                rad.gradus = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Введите число минут угла");
+                rad.min = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Введите число секунд угла");
+                rad.sec = Convert.ToDouble(Console.ReadLine());
+                double Radian = (rad.gradus + rad.min / 60 + rad.sec / 3600) * (Math.PI) / 180;
+                Console.WriteLine("1 вариант. Угол радиан = " + Radian); //Для понимания работы
+                Console.WriteLine("1 вариант. Угол радиан = " + rad.Radian); //Для понимания работы
+            }
+            else
+            {
+                rad.Enter();
+                rad.ToRadians();
+            }
+
             Console.ReadKey();
         }
+
     }
+
     class Ygol
     {
-        private double gradus;
-        private double min;
-        private double sec;
-       
-        public double Gradus
-        {
-            set
-            {
-                if (value > 0) { gradus = value; }
-                else { Console.WriteLine("Не соответствует параметтрам"); }
-            }
-            
-        }
-        public 
+        public double gradus;
+        public double min;
+        public double sec;
+        public double Radian;
 
-        
+        public void Enter()
+        {
+            Console.WriteLine("Введите число градусов угла");
+            this.gradus = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Введите число минут угла");
+            this.min = Convert.ToDouble(Console.ReadLine()); 
+            Console.WriteLine("Введите число секунд угла");
+            this.sec = Convert.ToDouble(Console.ReadLine());
+        }
+        public void ToRadians()
+        {
+            double Radian = (gradus + min / 60 + sec / 3600) * (Math.PI) / 180;
+            Console.WriteLine("2 Вариант. Угол радиан = " + Radian);
+        }
+
+
+
     }
 }
